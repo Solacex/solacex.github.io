@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmable Evolution for Agent Benchmarks</title>
+  <style>
+    :root {
+      --bg: #f7f7f7;
+      --card: #ffffff;
+      --ink: #1b1f24;
+      --muted: #5f6b76;
+      --accent: #2f5f92;
+      --accent-soft: #eef3f8;
+      --border: #e0e3e7;
+      --shadow: none;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      width: min(1000px, 92vw);
+      margin: 0 auto;
+      padding: 16px 0 36px;
+    }
+
+    .hero {
+      background: #ffffff;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent-soft);
+      border: 1px solid #d6e1ec;
+      border-radius: 8px;
+      padding: 4px 10px;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 2.8vw, 32px);
+      line-height: 1.15;
+    }
+
+    .meta {
+      font-size: 19px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+
+    .orgs {
+      font-size: 18px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #d7dce2;
+      font-weight: 600;
+      font-size: 14px;
+      color: #253649;
+      background: #f5f7f9;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #e9eef3;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 23px;
+      letter-spacing: 0.01em;
+    }
+
+    p {
+      margin: 0 0 10px;
+      color: #253d4d;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .metric {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      background: #fbfeff;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      color: #073f52;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .authors {
+      font-size: 14px;
+      color: #19495f;
+      margin-top: 8px;
+    }
+
+    figure {
+      margin: 12px 0 0;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    figcaption {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .kicker {
+      margin-top: 8px;
+      display: inline-block;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #1b5b73;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    .workflow-large img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .tldr-list {
+      margin: 0;
+      padding-left: 20px;
+      color: #2a3a4a;
+    }
+
+    @media (min-width: 840px) {
+      .grid {
+        grid-template-columns: 1.25fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../index.html">← Back to homepage</a>
+
+    <section class="hero">
+      <span class="badge">Arxiv Preprint</span>
+      <h1>The World Won't Stay Still:<br>Programmable Evolution for Agent Benchmarks</h1>
+      <p class="meta">
+        Guangrui Li*, Yaochen Xie*, Yi Liu*, Ziwei Dong*, Xingyuan Pan*, Tianqi Zheng*, Jason Choi*,<br>
+        Michael Morais*, Binit Jha*, Shaunak Mishra*, Bingrou Zhou*, Chen Luo*, Monica Cheng*, Dawn Song&#8224;
+      </p>
+      <p class="orgs">
+        * Amazon &nbsp;&nbsp; &#8224; UC Berkeley
+      </p>
+      <div class="btns">
+        <a class="btn" href="../papers/ProEvolve.pdf">Paper (PDF)</a>
+        <a class="btn" href="#">arXiv (coming soon)</a>
+        <a class="btn" href="https://github.com/Solacex/solacex.github.io">Code / Assets</a>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>Overview</h2>
+      <figure>
+        <img src="assets/proevolve/evo_workflow.png" alt="Graph-based programmable environment evolution workflow">
+        <figcaption>From seed graph to versioned environments through controlled graph edits.</figcaption>
+      </figure>
+      <h2 style="margin-top:16px;">TL;DR</h2>
+      <ul class="tldr-list">
+        <li>[Fill] One-line problem statement.</li>
+        <li>[Fill] One-line method summary.</li>
+        <li>[Fill] One-line key result / takeaway.</li>
+      </ul>
+    </section>
+
+    <div class="grid" style="margin-top:20px;">
+    <section class="card">
+        <h2>Abstract</h2>
+        <p>
+          LLM-powered agents solve user requests by interacting with environments, querying data, and invoking tools in multi-turn workflows. However, most existing benchmarks evaluate agents in static environments with fixed schemas and toolsets, which misses a key real-world challenge: environments evolve over time.
+        </p>
+        <p>
+          We introduce <strong>ProEvolve</strong>, a graph-based framework for programmable environment evolution. ProEvolve models data, tools, and schemas as a typed relational graph, where capability updates (adding, removing, or modifying tools and fields) are represented as coherent graph transformations. Based on this representation, the framework can both generate evolving environments automatically and instantiate task sandboxes via subgraph programming. We validate ProEvolve by evolving a single seed environment into 200 environments and 3,000 task sandboxes, then benchmarking representative agents to study robustness under dynamic change.
+        </p>
+        <span class="kicker">Core idea: </span>
+
+        <h2 style="margin-top:18px;">Key Results</h2>
+        <div class="highlights">
+          <div class="metric"><strong>200</strong><span>Versioned environments generated</span></div>
+          <div class="metric"><strong>2,000+</strong><span>Task sandboxes in evolving settings</span></div>
+          <div class="metric"><strong>384</strong><span>Unique tools across evolved benchmark</span></div>
+          <div class="metric"><strong>50</strong><span>Evolution episodes from one seed environment</span></div>
+        </div>
+    </section>
+
+    <section class="card">
+      <h2>Efficiency and Robustness Trends</h2>
+      <p>
+        Preliminary experiments show clear model gaps and adaptation challenges under sequential environment evolution. Memory replay can help in some conditions, while reflection replay can also degrade robustness depending on the model and evolution type.
+      </p>
+      <figure>
+        <img src="assets/proevolve/strategy_comparison_combined.png" alt="Strategy comparison under evolving environments">
+        <figcaption>Replay strategy comparison across model families and evolving environment versions.</figcaption>
+      </figure>
+    </section>
+    </div>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>Citation</h2>
+      <p>
+        If you use this benchmark framework, please cite the project page and paper once the arXiv identifier is available.
+      </p>
+      <p class="authors">
+        Last updated: March 2026.
+      </p>
+    </section>
+  </div>
+</body>
+</html>
